@@ -48,3 +48,12 @@ I don't have any preference yet but we should probably decide what language(s) w
 
 I think the best plan is to start with a simplest FSM. First design the code for "creating" an FSM, possibly without a code visualization technique. Then we should undergo a translation, convert
 it to a simple IR, and finally produce a C backend (as that is probably the easiest to do). 
+
+
+## Steps
+- Grab User input that describes a state machine
+    - create visual
+- Generated into ir
+    - Using llvm compiler
+    - We can intercept things at different stages of the compiler if we want to do optimizations
+- Translate into state machine languages
