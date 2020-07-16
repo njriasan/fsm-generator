@@ -1,0 +1,6 @@
+name: fsmGen
+channels:
+    - conda-forge
+    - defaults
+dependencies:
+    - numba=0.50
