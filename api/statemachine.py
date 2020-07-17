@@ -1,5 +1,10 @@
 from typing import Callable, Iterable, Mapping
 
+#forward declare
+class State:
+    def __init__(self):
+        pass
+
 # Class holding the information for the overall state machine
 class StateMachine:
     
@@ -47,7 +52,7 @@ class Transition:
 # Class holding the information about a particular state
 class State:
 
-    def __init__(self, name: str, action_func: Callable [[], []]):
+    def __init__(self, name: str, action_func: Callable [[], None]):
         self._name = name
         self._transitions = []
         self._action_func = action_func
