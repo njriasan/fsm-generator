@@ -28,7 +28,7 @@ class StateMachine:
         names_set = set()
         initial_counter = 0
         for state in states:
-            names_set.append(state.getName())
+            names_set.add(state.getName())
             is_initial = state.isInitial()
             if is_initial:
                 initial_counter += 1
@@ -48,7 +48,7 @@ class StateMachine:
     def tick(self):
         # TODO: Figure out how to include the input/output
         # vars as available in each function        
-        state = getCurrState()
+        state = self.getCurrState()
 
         # Calls the action function of the state
         state.action(self._input_vars, self._output_vars, self._defined_vars)
@@ -57,7 +57,7 @@ class StateMachine:
         for transition in state.getTransitions():
             if transition.checkCondition(self._input_vars, self._output_vars, self._defined_vars):
                 # Updates the current state
-                self._curr_state = self.getNextState()
+                self._curr_state = transition.getNextState()
                 break
 
     def getOutputVar(self, var_name: str):
@@ -104,7 +104,7 @@ class State:
     def getTransitions(self) -> List[Transition]:
         return self._transitions
 
-    def action(self, input_var, output_vars, defined_vars):
+    def action(self, input_vars, output_vars, defined_vars):
         self._action_func(input_vars, output_vars, defined_vars)
 
     def isInitial(self) -> bool:
